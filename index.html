@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Catálogo Digital — D & G Parfums</title>
+  <meta name="description" content="Catálogo digital exclusivo de fragancias finas D & G Parfums. Votre essence, votre style.">
+  <!-- Favicon / Logo en pestaña -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="img/favicon-192.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Encabezado con buscador y branding -->
+  <header>
+    <div class="brand-row">
+      <div class="brand-identity-wrap">
+        <img src="img/logo-dg.jpg" alt="Logo D & G Parfums" class="brand-logo">
+        <div class="brand-text-block">
+          <h1 class="brand-title">D & G Parfums</h1>
+          <p class="brand-tagline">Votre essence, votre style</p>
+        </div>
+      </div>
+    </div>
+    <div class="search-box">
+      <i class="search-icon" data-lucide="search" aria-hidden="true"></i>
+      <input type="text" id="searchInput" class="search-input" placeholder="Buscar por nombre, código o aroma...">
+      <button class="search-clear-btn" type="button" data-action="clear-search" aria-label="Borrar búsqueda" title="Borrar búsqueda" hidden>
+        <i data-lucide="x" aria-hidden="true"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Pestañas horizontales de categorías -->
+  <nav class="categories-bar" id="categoryBar" aria-label="Categorías del catálogo">
+    <button class="pill-btn active" data-category="all">Todos</button>
+    <button class="pill-btn map-pill" data-category="mapa">Mapa Olfativo</button>
+    <button class="pill-btn" data-category="hombre">Hombre</button>
+    <button class="pill-btn" data-category="mujer">Mujer</button>
+    <button class="pill-btn" data-category="red-black">Línea Red & Black</button>
+    <button class="pill-btn" data-category="teen">Línea Teen</button>
+    <button class="pill-btn" data-category="colonia-h">Colonia Hombre</button>
+    <button class="pill-btn" data-category="colonia-m">Colonia Mujer</button>
+    <button class="pill-btn" data-category="splash">Splash</button>
+    <button class="pill-btn" data-category="crema">Cremas</button>
+  </nav>
+
+  <!-- SECCIÓN MAPA OLFATIVO -->
+  <section class="map-section" id="mapSection" hidden>
+    <div class="map-tabs">
+      <button class="map-tab-btn active" id="btnMapMujer" data-action="map-gender" data-gender="mujer">Fragancias Femeninas</button>
+      <button class="map-tab-btn" id="btnMapHombre" data-action="map-gender" data-gender="hombre">Fragancias Masculinas</button>
+    </div>
+
+    <!-- Leyenda de colores -->
+    <div class="legend-container">
+      <div class="legend-title">Familias Olfativas (Puntos de Color)</div>
+      <div class="legend-grid">
+        <div class="legend-item"><span class="dot c-citrico"></span> Cítrico</div>
+        <div class="legend-item"><span class="dot c-frutal"></span> Frutal</div>
+        <div class="legend-item"><span class="dot c-chypre"></span> Chypre</div>
+        <div class="legend-item"><span class="dot c-floral"></span> Floral</div>
+        <div class="legend-item"><span class="dot c-verde"></span> Verde</div>
+        <div class="legend-item"><span class="dot c-maderoso"></span> Maderoso</div>
+        <div class="legend-item"><span class="dot c-oriental"></span> Oriental</div>
+        <div class="legend-item"><span class="dot c-fougere"></span> Fougère</div>
+        <div class="legend-item"><span class="dot c-aldehidico"></span> Aldehídico</div>
+        <div class="legend-item"><span class="dot c-aromatico"></span> Aromático</div>
+        <div class="legend-item"><span class="dot c-especiado"></span> Especiado</div>
+        <div class="legend-item"><span class="dot c-cuero"></span> Cuero</div>
+      </div>
+    </div>
+
+    <!-- Contenido de brújula renderizado desde el catálogo -->
+    <div id="mapContainerMujer" class="compass-card"></div>
+    <div id="mapContainerHombre" class="compass-card" hidden></div>
+  </section>
+
+  <!-- Contenedor del Catálogo Principal -->
+  <main class="catalog-container" id="catalogList">
+    <!-- Renderizado vía JavaScript -->
+  </main>
+
+  <footer class="catalog-footer">
+    <p class="footer-brand">Maison D & G Parfums</p>
+    <p class="footer-tagline">Votre essence, votre style · Catálogo Digital</p>
+  </footer>
+
+  <script src="js/base-datos.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
