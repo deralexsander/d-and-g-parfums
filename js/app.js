@@ -519,12 +519,36 @@ function appendTeenProducts(container, items) {
   }
 }
 
+function getCategoryLabel(p) {
+  if (p.cat === "mujer") return "Perfume Mujer";
+  if (p.cat === "hombre") return "Perfume Hombre";
+  if (p.cat === "red-black") {
+    return p.badge === "BLACK" ? "Línea Black" : "Línea Red";
+  }
+  if (p.cat === "teen") {
+    return /^J0[0-6]$/.test(p.code) ? "Línea Teen Girl" : "Línea Teen Boy";
+  }
+  if (p.cat === "colonia-m") return "Colonia Dama";
+  if (p.cat === "colonia-h") return "Colonia Hombre";
+  if (p.cat === "splash") return "Colonia Splash";
+  if (p.cat === "crema") return "Cuidado Facial";
+  return categoryMeta[p.cat]?.title || "Perfume";
+}
+
 // Función constructora para cada tarjeta de producto (sin botones de compra, precio agrandado)
 function buildProductCard(p) {
+  let specialBadge = "";
   let badgeClass = "badge-std";
-  if (p.badge === "RED") badgeClass = "badge-red";
-  if (p.badge === "BLACK") badgeClass = "badge-black";
-  if (p.badge === "TEEN") badgeClass = "badge-teen";
+  if (p.badge === "RED") {
+    specialBadge = "RED";
+    badgeClass = "badge-red";
+  } else if (p.badge === "BLACK") {
+    specialBadge = "BLACK";
+    badgeClass = "badge-black";
+  } else if (p.cat === "teen") {
+    specialBadge = "TEEN";
+    badgeClass = "badge-teen";
+  }
 
   let dotsHtml = "";
   if (p.colors && p.colors.length > 0) {
@@ -547,8 +571,7 @@ function buildProductCard(p) {
     price = p.price || 0;
   }
 
-  const categoryBadge = categoryMeta[p.cat]?.badge || "";
-  const productBadge = p.cat === "teen" ? categoryBadge : p.badge;
+  const categoryLabel = getCategoryLabel(p);
   const presentationVisible = isPresentationVisible(p);
   const presentationImage = getPresentationImage(p);
   const aromaImagePath = getAromaImagePath(p);
@@ -564,22 +587,32 @@ function buildProductCard(p) {
   return `
     <div class="card${p.cat === "hombre" ? " card-male" : p.cat === "mujer" ? " card-female" : ""}" data-product-card="${p.id}">
       <div class="card-body-content">
+        <!-- 1. Encabezado superior: Código y puntos olfativos -->
         <div class="card-top">
           <div class="card-identity">
             <span class="card-code">${escapeHTML(p.code)}</span>
             ${dotsHtml}
           </div>
-          ${productBadge ? `<span class="card-badge ${badgeClass}">${productBadge}</span>` : `<span class="card-badge badge-std">${categoryBadge}</span>`}
+          ${specialBadge ? `<span class="card-badge ${badgeClass}">${specialBadge}</span>` : ""}
         </div>
+
+        <!-- 2. Imagen centrada con toggle de aroma/frasco -->
         ${productImage ? `
           <div class="card-img-wrapper card-img-wrapper-${p.cat}">
             <img class="card-product-image" src="${productImage.src}" alt="${escapeHTML(productImage.alt)}" data-fallback-src="${missingImageSrc}" loading="lazy">
             ${aromaImageButton}
           </div>` : ""}
-        <div class="card-title">${productName}</div>
-        <div class="card-subtitle">${escapeHTML(p.sub || "")}</div>
-        ${p.notes ? `<div class="card-notes">${aromaNotes}</div>` : ""}
+
+        <!-- 3. Etiquetado, Nombre e Información ordenada -->
+        <div class="card-info">
+          <div class="card-category-label">${escapeHTML(categoryLabel)}</div>
+          <div class="card-title" title="${productName}">${productName}</div>
+          <div class="card-subtitle">${escapeHTML(p.sub || "")}</div>
+          ${p.notes ? `<div class="card-notes">${aromaNotes}</div>` : ""}
+        </div>
       </div>
+
+      <!-- 4. Formato y Precio destacado -->
       <div class="card-bottom">
         <div class="card-price-row">
           <span class="card-size-label">${escapeHTML(sizeLabel)}</span>
