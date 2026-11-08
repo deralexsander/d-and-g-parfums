@@ -53,11 +53,6 @@ const categoryMeta = {
     title: "Colonia Splash Refrescante",
     desc: "Loción corporal fresca cítrica-frutal (500 ml)",
     badge: "Splash"
-  },
-  "crema": {
-    title: "Cremas y Tratamientos",
-    desc: "Tratamiento y cuidado de la piel (50 ml)",
-    badge: "Crema"
   }
 };
 
@@ -214,16 +209,6 @@ function getPresentationImage(product) {
   }
   if (product.cat === "splash") {
     return { src: "img/colonia%20splash/Presentaci%C3%B3n%20general/colonia-splash-parfums-b101-500ml.webp", alt: "Envase de colonia Splash 500 ml" };
-  }
-  if (product.cat === "crema") {
-    const code = (product.code || "").toUpperCase().replace(/\s+/g, "");
-    if (code.includes("T-03") || code.includes("T03")) {
-      return { src: "img/cremas/Presentaci%C3%B3n%20general/crema-perfection-t03-50ml.webp", alt: "Crema Facial Perfection 50 ml" };
-    }
-    if (code.includes("T-04") || code.includes("T04")) {
-      return { src: "img/cremas/Presentaci%C3%B3n%20general/crema-propoleo-t04-50ml.webp", alt: "Crema Facial de Propóleo 50 ml" };
-    }
-    return { src: "img/cremas/Presentaci%C3%B3n%20general/crema-perfection-t03-50ml.webp", alt: "Crema facial 50 ml" };
   }
   return null;
 }
@@ -531,7 +516,6 @@ function getCategoryLabel(p) {
   if (p.cat === "colonia-m") return "Colonia Dama";
   if (p.cat === "colonia-h") return "Colonia Hombre";
   if (p.cat === "splash") return "Colonia Splash";
-  if (p.cat === "crema") return "Cuidado Facial";
   return categoryMeta[p.cat]?.title || "Perfume";
 }
 
@@ -657,7 +641,7 @@ function renderProducts() {
 
   // Si está en 'Todos' y sin búsqueda activa: separar por secciones visualmente distinguidas
   if (currentCategory === "all" && !searchQuery.trim()) {
-    const order = ["red-black", "mujer", "hombre", "teen", "colonia-m", "colonia-h", "splash", "crema"];
+    const order = ["red-black", "mujer", "hombre", "teen", "colonia-m", "colonia-h", "splash"];
     order.forEach(catKey => {
       const catProducts = filtered.filter(p => p.cat === catKey);
       if (catProducts.length > 0) {

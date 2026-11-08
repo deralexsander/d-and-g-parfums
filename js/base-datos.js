@@ -203,11 +203,7 @@ window.CatalogData = {
       { id: "s30", code: "S30", name: "212 VIP Rosé", sub: "Colonia Corporal", cat: "colonia-m", badge: "400 ML", fixedSize: "400 ml", price: 6000 },
 
       // ================= SPLASH =================
-      { id: "splash", code: "SPLASH", name: "Colonia Splash", sub: "Explosión cítrica-frutal", cat: "splash", badge: "500 ML", fixedSize: "500 ml", price: 6600, notes: "Explosión cítrica-frutal", colors: ["c-citrico", "c-frutal"] },
-
-      // ================= CREMAS =================
-      { id: "t03", code: "T-03", name: "Crema Facial Perfection", sub: "Cuidado y Tratamiento Facial", cat: "crema", badge: "50 ML", fixedSize: "50 ml", price: 5000, notes: "Tratamiento facial hidratante", colors: ["c-floral"] },
-      { id: "t04", code: "T-04", name: "Crema Facial Propóleo", sub: "Cuidado y Tratamiento Facial", cat: "crema", badge: "50 ML", fixedSize: "50 ml", price: 5000, notes: "Nutrición y regeneración", colors: ["c-verde"] }
+      { id: "splash", code: "SPLASH", name: "Colonia Splash", sub: "Explosión cítrica-frutal", cat: "splash", badge: "500 ML", fixedSize: "500 ml", price: 6600, notes: "Explosión cítrica-frutal", colors: ["c-citrico", "c-frutal"] }
     ],
   standardPrices: {
       "100ml": 17000,

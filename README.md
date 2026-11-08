@@ -39,7 +39,7 @@ El requerimiento fue preciso y estratégico:
 | 🌿 **Familias y notas olfativas** | Puntos de color y notas descriptivas que representan la composición y estilo de cada fragancia. |
 | 🖼️ **Alternancia de imagen** | Permite alternar de forma táctil entre la inspiración aromática y la presentación del frasco. |
 | 🏷️ **Precios destacados** | Exhibición clara y en tipografía de gran formato del valor correspondiente al formato estándar de cada producto. |
-| 🗂️ **Categorización completa** | Pestañas superiores para filtrar por Colección Red & Black, Hombre, Mujer, Línea Teen, Colonias Corporales, Splash y Cremas. |
+| 🗂️ **Categorización completa** | Pestañas superiores para filtrar por Colección Red & Black, Hombre, Mujer, Línea Teen, Colonias Corporales y Splash. |
 
 ---
 
@@ -81,8 +81,7 @@ d-and-g-parfums/
 │   ├── teen/
 │   ├── Colonias Hombre/
 │   ├── colonias mujer/
-│   ├── colonia splash/
-│   └── cremas/
+│   └── colonia splash/
 └── docs/                # Documentación y capturas
     └── img/             # Capturas del catálogo
 ```
